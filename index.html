@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Portal - EduTrack</title>
+
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     LOGIN
+========================================================= -->
+
+<div id="loginScreen" class="login-screen">
+
+    <div class="login-card">
+
+        <div class="login-logo">
+            🎓
+        </div>
+
+        <h1>Student Portal</h1>
+
+        <p>
+            Secure student report and academic management system
+        </p>
+
+
+        <form id="loginForm">
+
+            <label>Username</label>
+
+            <input
+                id="username"
+                type="text"
+                placeholder="Enter username"
+                required
+            >
+
+
+            <label>Password</label>
+
+            <div class="password-box">
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Enter password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    id="togglePassword">
+
+                    Show
+
+                </button>
+
+            </div>
+
+
+            <label>CAPTCHA</label>
+
+            <div class="captcha-row">
+
+                <div
+                    id="captchaCode"
+                    class="captcha-code">
+                </div>
+
+                <button
+                    type="button"
+                    id="refreshCaptcha"
+                    class="refresh-captcha">
+
+                    ↻
+
+                </button>
+
+            </div>
+
+
+            <input
+                id="captchaInput"
+                placeholder="Enter CAPTCHA"
+                required
+            >
+
+
+            <div
+                id="loginError"
+                class="error">
+            </div>
+
+
+            <button
+                class="login-btn"
+                type="submit">
+
+                Login to Portal →
+
+            </button>
+
+        </form>
+
+
+        <div class="demo-box">
+
+            <b>Demo Accounts</b>
+
+            <br>
+
+            alex / alex123
+
+            <br>
+
+            priya / priya123
+
+            <br>
+
+            rahul / rahul123
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     APP
+========================================================= -->
+
+<div id="app" class="app hidden">
+
+    <!-- SIDEBAR -->
+
+    <aside id="sidebar" class="sidebar">
+
+        <div class="brand">
+
+            <span class="brand-icon">🎓</span>
+
+            <b>Student Portal</b>
+
+        </div>
+
+
+        <div class="navigation">
+
+            <button
+                class="nav-btn active"
+                data-page="home">
+
+                🏠 Home
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="profile">
+
+                👤 Profile
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="attendance">
+
+                ✓ Attendance
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="grades">
+
+                📊 Grades
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="analysis">
+
+                📈 Student Analysis
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="assignments">
+
+                📝 Assignments
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="exams">
+
+                🎓 Exams
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="timetable">
+
+                📅 Timetable
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="fees">
+
+                ₹ Fees
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="events">
+
+                📆 Events
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="notices">
+
+                🔔 Notices
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="gallery">
+
+                🖼️ Gallery
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="library">
+
+                📚 Library
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="staff">
+
+                👥 Faculty
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="chat">
+
+                💬 Messages
+
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="settings">
+
+                ⚙ Settings
+
+            </button>
+
+        </div>
+
+
+        <button
+            id="logoutBtn"
+            class="nav-btn logout-btn">
+
+            ↪ Logout
+
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <button
+                id="menuBtn"
+                class="menu-btn">
+
+                ☰
+
+            </button>
+
+
+            <div class="search-box">
+
+                🔍
+
+                <input
+                    id="globalSearch"
+                    placeholder="Search anything..."
+                >
+
+            </div>
+
+
+            <div class="top-right">
+
+                <button
+                    id="notificationBtn"
+                    class="notification-btn">
+
+                    🔔
+
+                    <span
+                        class="notification-count">
+                        3
+                    </span>
+
+                </button>
+
+
+                <div
+                    id="topAvatar"
+                    class="top-avatar">
+
+                    A
+
+                </div>
+
+
+                <div class="top-user-name">
+
+                    <b id="topUserName">
+                        Alex
+                    </b>
+
+                    <small>
+                        Student
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+
+            <!-- HOME -->
+
+            <section
+                id="home"
+                class="page active">
+            </section>
+
+
+            <!-- PROFILE -->
+
+            <section
+                id="profile"
+                class="page">
+            </section>
+
+
+            <!-- ATTENDANCE -->
+
+            <section
+                id="attendance"
+                class="page">
+            </section>
+
+
+            <!-- GRADES -->
+
+            <section
+                id="grades"
+                class="page">
+            </section>
+
+
+            <!-- ANALYSIS -->
+
+            <section
+                id="analysis"
+                class="page">
+            </section>
+
+
+            <!-- ASSIGNMENTS -->
+
+            <section
+                id="assignments"
+                class="page">
+            </section>
+
+
+            <!-- EXAMS -->
+
+            <section
+                id="exams"
+                class="page">
+            </section>
+
+
+            <!-- TIMETABLE -->
+
+            <section
+                id="timetable"
+                class="page">
+            </section>
+
+
+            <!-- FEES -->
+
+            <section
+                id="fees"
+                class="page">
+            </section>
+
+
+            <!-- EVENTS -->
+
+            <section
+                id="events"
+                class="page">
+            </section>
+
+
+            <!-- NOTICES -->
+
+            <section
+                id="notices"
+                class="page">
+            </section>
+
+
+            <!-- GALLERY -->
+
+            <section
+                id="gallery"
+                class="page">
+            </section>
+
+
+            <!-- LIBRARY -->
+
+            <section
+                id="library"
+                class="page">
+            </section>
+
+
+            <!-- STAFF -->
+
+            <section
+                id="staff"
+                class="page">
+            </section>
+
+
+            <!-- CHAT -->
+
+            <section
+                id="chat"
+                class="page">
+            </section>
+
+
+            <!-- SETTINGS -->
+
+            <section
+                id="settings"
+                class="page">
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div
+    id="modal"
+    class="modal hidden">
+
+    <div class="modal-content">
+
+        <button
+            id="closeModal"
+            class="close-modal">
+
+            ×
+
+        </button>
+
+        <div id="modalBody"></div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast">
+</div>
+
+
+
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
